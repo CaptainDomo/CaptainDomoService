@@ -1,0 +1,11 @@
+version: '2.1'
+services:
+  captain-domo-service-lamp:
+    build:
+      context: .
+    ports:
+      - 80:80
+      - 3306:3306
+    volumes:
+      - ./captainDomoServiceConfig:/www/src/Config
+      - ./logs/apache2:/var/log/apache2/
