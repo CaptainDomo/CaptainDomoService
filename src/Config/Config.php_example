@@ -1,0 +1,67 @@
+<?php
+namespace cds\Config;
+
+class Config
+{
+    static function get()
+    {
+        //CaptainDomoService
+        $config['BasicAuthUsers']['lena'] = "agnes";
+        $config['BasicAuthUsers']['philipp'] = "pete";
+
+        //DBHandler
+        $config['DBHandler']['url'] = "localhost:3306";
+        $config['DBHandler']['db'] = "CaptainDomo";
+        $config['DBHandler']['user'] = "CaptainDomo";
+        $config['DBHandler']['pass'] = "CaptainDomoPass";
+
+        //MailService
+        $config['MailService']['environment'] = "TEST";
+        $config['MailService']['test_from_surrogate'] = "captain.domo.test@yourdomain.com";
+        $config['MailService']['test_to_surrogate'] = "captain.domo.test@yourdomain.com";
+        $config['MailService']['server_url'] = "tls://mailserver.yourdomain.com";
+        $config['MailService']['server_port'] = "465";
+        $config['MailService']['user'] = "mail_user";
+        $config['MailService']['pass'] = "mail_pass";
+
+        //MajorDomoService
+        $config ['MajorDomoService'] ['mail_from'] = "captain.domo@yourdomain.com";
+        $config ['MajorDomoService'] ['majordomo_to'] = "majordomo@yourdomain.com";
+
+        //MajorDomoService - Subscribe
+        $config ['MajorDomoService'] ['majordomo_subscribe_subject'] = "Register new user";
+        $config ['MajorDomoService'] ['majordomo_subscribe_command'] =
+            "approve <APPROVE_PASSWORD> subscribe mailingliste-yourdomain-com %s";
+        $config ['MajorDomoService'] ['subscribe_success_email_subject'] =
+            "Registration at mailinglist@yourdomain.com successful.";
+        $config ['MajorDomoService'] ['subscribe_success_email_msg'] =
+            "Welcome! Your have successfully registered at mailinglist@yourdomain.com.\r\n";
+
+        //MajorDomoService - Unsubscribe
+        $config ['MajorDomoService'] ['majordomo_unsubscribe_subject'] = "Unsubscribe user";
+        $config ['MajorDomoService'] ['majordomo_unsubscribe_command'] =
+            "approve <APPROVE_PASSWORD> unsubscribe mailingliste-yourdomain-com %s";
+        $config ['MajorDomoService'] ['unsubscribe_success_email_msg'] =
+            "Sorry, you leave! You successfully unregistered at mailinglist@yourdomain.com.";
+        $config ['MajorDomoService'] ['unsubscribe_success_email_subject'] =
+            "Deregistration at mailingliste@yourdomain.com successful.";
+
+        //SuspectService
+        $config ['SuspectService'] ['admin_mail_to'] = "captain.domo.admin@yourdomain.com"; // Receives notification about suspects
+        $config ['SuspectService'] ['manage_suspect_url'] = "http://yourdomain.com/CaptainDomo/CaptainDomoManagement/#/suspect";
+        $config ['SuspectService'] ['check_subscription_mail_subject'] =
+            "New regristration application for Mailinglsit";
+        $config ['SuspectService'] ['check_subscription_mail_body'] =
+            "%s %s (memeber number: %s) has tried to register with email address %s for your mailinglist.".
+            "Autmoatic registration was not sucessful, because of %s.\r\nPlease check this application: %s";
+        $config ['SuspectService'] ['reject_subscription_request_subject'] =
+            "Registration for mailinglist rejected.";
+        $config ['SuspectService'] ['reject_subscription_request_mail_body'] =
+            "Your registration application for mailinglist was rejected.\r\n".
+            "In case of questions please refer to: captain.domo.admin@yourdomain.com";
+
+        return $config;
+    }
+}
+
+?>
