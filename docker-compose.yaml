@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   captain-domo-service-lamp:
-    image: captain-domo-service-lamp:latest
+    image: captaindomo/captaindomoservice:latest
     ports:
       - 80:80
       - 3306:3306
